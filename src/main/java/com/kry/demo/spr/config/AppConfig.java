@@ -15,8 +15,4 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = "com.kry.demo.spr")
 public class AppConfig {
 
-    @Bean
-    public ManService manService2() {
-        return new ManService();
-    }
 }

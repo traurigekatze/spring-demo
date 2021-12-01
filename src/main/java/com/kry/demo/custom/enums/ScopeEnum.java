@@ -9,6 +9,6 @@ package com.kry.demo.custom.enums;
  */
 public enum  ScopeEnum {
 
-    singleton, prototype
+    SINGLETON, PROTOTYPE
 
 }

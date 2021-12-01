@@ -1,5 +1,6 @@
 package com.kry.demo.custest.service;
 
+import com.kry.demo.custom.annotation.MyAutowired;
 import com.kry.demo.custom.annotation.MyComponent;
 
 /**
@@ -11,4 +12,12 @@ import com.kry.demo.custom.annotation.MyComponent;
  */
 @MyComponent
 public class CustomInfoService {
+
+    public CustomInfoService() {
+        System.out.println("this custom info service constructor...");
+    }
+
+    public void test() {
+        System.out.println("this is custom info test method..." + this);
+    }
 }

@@ -11,17 +11,17 @@ import com.kry.demo.custom.enums.ScopeEnum;
  */
 public class MyBeanDefinition {
 
-    private Class beanClass;
+    private Class<?> beanClass;
 
     private ScopeEnum scope;
 
     private boolean lazy;
 
-    public Class getBeanClass() {
+    public Class<?> getBeanClass() {
         return beanClass;
     }
 
-    public void setBeanClass(Class beanClass) {
+    public void setBeanClass(Class<?> beanClass) {
         this.beanClass = beanClass;
     }
 

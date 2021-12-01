@@ -1,5 +1,6 @@
 package com.kry.demo.spr.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,4 +12,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class WomanService {
+
+    @Autowired
+    private ManService manService;
+
+    public WomanService(ManService manService) {
+        this.manService = manService;
+    }
 }
