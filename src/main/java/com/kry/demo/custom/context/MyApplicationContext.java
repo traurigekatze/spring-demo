@@ -54,7 +54,6 @@ public class MyApplicationContext {
             Preconditions.checkArgument(StringUtils.isNotBlank(scanPath), "scan path must be not blank");
 
             String filePath = PathUtils.replaceUrlPath(scanPath);
-
             // get classes by scan path
             final ClassLoader classLoader = this.getClass().getClassLoader();
             URL resource = classLoader.getResource(filePath);
@@ -66,20 +65,19 @@ public class MyApplicationContext {
 
             // build beanDefinition
             classes.forEach(clazz -> {
-                if (!clazz.isAnnotationPresent(MyComponent.class)) {
-                    return;
+                if (clazz.isAnnotationPresent(MyComponent.class)) {
+                    String beanName = getBeanName(clazz);
+                    MyBeanDefinition beanDefinition = new MyBeanDefinition();
+                    beanDefinition.setBeanClass(clazz);
+                    beanDefinition.setLazy(clazz.isAnnotationPresent(MyLazy.class));
+                    if (clazz.isAnnotationPresent(MyScope.class)
+                            && ScopeEnum.PROTOTYPE.toString().equals(clazz.getAnnotation(MyScope.class).value())) {
+                        beanDefinition.setScope(ScopeEnum.PROTOTYPE);
+                    } else {
+                        beanDefinition.setScope(ScopeEnum.SINGLETON);
+                    }
+                    beanDefinitionMap.put(beanName, beanDefinition);
                 }
-                String beanName = getBeanName(clazz);
-                MyBeanDefinition beanDefinition = new MyBeanDefinition();
-                beanDefinition.setBeanClass(clazz);
-                beanDefinition.setLazy(clazz.isAnnotationPresent(MyLazy.class));
-                if (clazz.isAnnotationPresent(MyScope.class)) {
-                    MyScope scope = clazz.getAnnotation(MyScope.class);
-                    beanDefinition.setScope(ScopeEnum.PROTOTYPE.toString().equals(scope.value()) ? ScopeEnum.PROTOTYPE : ScopeEnum.SINGLETON);
-                } else {
-                    beanDefinition.setScope(ScopeEnum.SINGLETON);
-                }
-                beanDefinitionMap.put(beanName, beanDefinition);
             });
         }
     }
