@@ -7,7 +7,7 @@ package com.kry.demo.custom.exception;
  * @date 2021/11/30
  * **********学海无涯苦作舟**********
  */
-public class MyNoSuchClassException extends Error {
+public class MyNoSuchClassException extends RuntimeException {
 
     public MyNoSuchClassException(String message) {
         super(message);

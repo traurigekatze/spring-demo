@@ -7,7 +7,7 @@ package com.kry.demo.custom.exception;
  * @date 2021/12/01
  * **********学海无涯苦作舟**********
  */
-public class MyBeanCurrentlyInCreationException extends Error {
+public class MyBeanCurrentlyInCreationException extends RuntimeException {
 
     public MyBeanCurrentlyInCreationException(String message) {
         super(message);

@@ -7,7 +7,7 @@ package com.kry.demo.custom.exception;
  * @date 2021/11/30
  * **********学海无涯苦作舟**********
  */
-public class MyNoSuchResourceException extends Error {
+public class MyNoSuchResourceException extends RuntimeException {
 
     public MyNoSuchResourceException(String message) {
         super(message);

@@ -7,7 +7,7 @@ package com.kry.demo.custom.exception;
  * @date 2021/11/30
  * **********学海无涯苦作舟**********
  */
-public class MyInvocationException extends Error {
+public class MyInvocationException extends RuntimeException {
 
     public MyInvocationException(String message) {
         super(message);

@@ -7,7 +7,7 @@ package com.kry.demo.custom.exception;
  * @date 2021/12/01
  * **********学海无涯苦作舟**********
  */
-public class MyCreateInstanceException extends Error {
+public class MyCreateInstanceException extends RuntimeException {
 
     public MyCreateInstanceException(String message) {
         super(message);
