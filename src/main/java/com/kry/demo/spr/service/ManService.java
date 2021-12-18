@@ -13,10 +13,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class ManService {
 
-    @Autowired
-    private WomanService womanService;
-
-    public ManService(WomanService womanService) {
-        this.womanService = womanService;
-    }
 }
