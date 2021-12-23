@@ -1,7 +1,7 @@
 package com.kry.demo.spr;
 
 import com.kry.demo.spr.config.AppConfig;
-import com.kry.demo.spr.service.UserService;
+import com.kry.demo.spr.service.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -14,9 +14,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class SprTests {
 
     public static void main(String[] args) {
+        System.out.println(SprTests.class.getName());
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        UserService userService = (UserService) context.getBean("my_name");
-        userService.test();
+
+        context.getBean(MemberService.class).test();
     }
 
 }
